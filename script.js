@@ -1,142 +1,65 @@
+/**
+ * PORTAFOLIO DE CÓDIGO PUERTO - JAVASCRIPT VAINILLA
+ * Control de Interacciones, Modo Claro/Oscuro y Guardado Local
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
-
-    // Language & Translation System (Optimized)
-    let currentLang = 'es';
-    const btnEs = document.getElementById('btnEs');
-    const btnEn = document.getElementById('btnEn');
-
-    const setLanguage = (lang) => {
-        currentLang = lang;
-        
-        document.querySelectorAll('[data-en]').forEach(el => {
-            // Guarda el texto original en español la primera vez
-            if (!el.dataset.es) el.dataset.es = el.textContent.trim();
-            // Alterna entre los dos textos guardados
-            el.textContent = (lang === 'en') ? el.dataset.en : el.dataset.es;
-        });
-
-        // Estilos visuales de los botones
-        btnEn.classList.toggle('bg-brand-red', lang === 'en');
-        btnEn.classList.toggle('text-white', lang === 'en');
-        btnEn.classList.toggle('text-gray-400', lang !== 'en');
-
-        btnEs.classList.toggle('bg-brand-red', lang === 'es');
-        btnEs.classList.toggle('text-white', lang === 'es');
-        btnEs.classList.toggle('text-gray-400', lang !== 'es');
-    };
-
-    btnEs.addEventListener('click', () => setLanguage('es'));
-    btnEn.addEventListener('click', () => setLanguage('en'));
     
-    // Mobile Menu Setup
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+    /* ==========================================================================
+       1. TOGGLE MODO OSCURO / CLARO CON LOCALSTORAGE
+       ========================================================================== */
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeLabel = document.getElementById('themeLabel');
+    const htmlElement = document.documentElement;
 
-    if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+    // Verificar preferencia guardada en localStorage o usar tema predeterminado
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+    
+    // Aplicar estado inicial
+    setTheme(savedTheme);
 
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
+    function setTheme(theme) {
+        htmlElement.setAttribute('data-theme', theme);
+        if (themeLabel) {
+            themeLabel.textContent = theme.toUpperCase();
+        }
+        localStorage.setItem('portfolio-theme', theme);
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
         });
     }
-    
-    // Skills Filter Logic
-    const filterButtons = document.querySelectorAll('.skill-filter-btn');
-    const skillCards = document.querySelectorAll('.skill-card');
 
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            
-            filterButtons.forEach(b => {
-                b.classList.remove('active', 'bg-brand-red', 'shadow-lg', 'shadow-brand-red/30');
-                b.classList.add('bg-gray-800', 'hover:bg-gray-700', 'border', 'border-gray-700');
-            });
-            
-            btn.classList.add('active', 'bg-brand-red', 'shadow-lg', 'shadow-brand-red/30');
-            btn.classList.remove('bg-gray-800', 'hover:bg-gray-700', 'border', 'border-gray-700');
+    /* ==========================================================================
+       2. SCROLL SUAVE Y NAVEGACIÓN
+       ========================================================================== */
+    const navLinks = document.querySelectorAll('a[href^="#"]');
 
-            const filter = btn.getAttribute('data-filter');
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const targetId = link.getAttribute('href');
+            if (targetId === '#') return;
 
-            skillCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                if (filter === 'all' || category === filter) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         });
     });
 
-    // Modal Logic for Skills
-    const skillModal = document.getElementById('skillModal');
-    const skillModalBackdrop = document.getElementById('skillModalBackdrop');
-    const skillModalContent = document.getElementById('skillModalContent');
-    const closeSkillModal = document.getElementById('closeSkillModal');
-    
-    const modalIcon = document.getElementById('modalSkillIcon');
-    const modalTitle = document.getElementById('modalSkillTitle');
-    const modalDesc = document.getElementById('modalSkillDesc');
-
-    const openModal = (card) => {
-        // Get data from clicked card based on current language
-        const titleEn = card.getAttribute('data-title-en');
-        const title = (currentLang === 'en' && titleEn) ? titleEn : card.getAttribute('data-title');
-        
-        const descEn = card.getAttribute('data-desc-en');
-        const descEs = card.getAttribute('data-desc-es') || card.getAttribute('data-desc');
-        const desc = (currentLang === 'en' && descEn) ? descEn : descEs;
-
-        const iconHTML = card.getAttribute('data-icon');
-
-        // Populate modal
-        modalTitle.textContent = title;
-        modalDesc.textContent = desc;
-        modalIcon.innerHTML = iconHTML;
-
-        // Show modal
-        skillModal.classList.remove('hidden');
-        
-        requestAnimationFrame(() => {
-            skillModalBackdrop.classList.remove('opacity-0');
-            skillModalBackdrop.classList.add('opacity-100');
-            
-            skillModalContent.classList.remove('scale-95', 'opacity-0');
-            skillModalContent.classList.add('scale-100', 'opacity-100');
-        });
-        
-        document.body.style.overflow = 'hidden';
-    };
-
-    const closeModal = () => {
-        skillModalBackdrop.classList.remove('opacity-100');
-        skillModalBackdrop.classList.add('opacity-0');
-        
-        skillModalContent.classList.remove('scale-100', 'opacity-100');
-        skillModalContent.classList.add('scale-95', 'opacity-0');
-        
-        setTimeout(() => {
-            skillModal.classList.add('hidden');
-            document.body.style.overflow = '';
-        }, 300);
-    };
-
-    skillCards.forEach(card => {
-        card.addEventListener('click', () => openModal(card));
-    });
-
-    closeSkillModal.addEventListener('click', closeModal);
-    skillModalBackdrop.addEventListener('click', closeModal);
-    
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !skillModal.classList.contains('hidden')) {
-            closeModal();
-        }
-    });
-
+    /* ==========================================================================
+       3. EFECTO DE LÍNEA DE COMANDOS EN CONSOLA DEL NAVEGADOR
+       ========================================================================== */
+    console.log(
+        '%c [SYS_INIT] Pablo Navas - Portfolio Loaded Successfully ',
+        'background: #080b10; color: #00f0ff; font-family: monospace; font-size: 12px; padding: 4px; border: 1px solid #00f0ff;'
+    );
 });
