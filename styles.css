@@ -705,3 +705,261 @@ body {
         gap: 0.8rem;
     }
 }
+
+/* ==========================================================================
+   ESTILOS DE HABILIDADES TÉCNICAS (ESTILO PORTAFOLIO)
+   ========================================================================== */
+.skills-filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+}
+
+.skill-filter-btn {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 0.6rem 1.2rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.skill-filter-btn:hover,
+.skill-filter-btn.active {
+    background-color: var(--accent-crimson);
+    border-color: var(--accent-crimson);
+    color: #ffffff;
+    box-shadow: 0 0 15px var(--accent-crimson-glow);
+}
+
+.skills-grid-portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-card-port {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.skill-card-port:hover {
+    border-color: var(--accent-cyan);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.skill-icon-box {
+    width: 48px;
+    height: 48px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+/* Colores personalizados para iconos de habilidades */
+.skill-icon-box.orange { color: #f97316; }
+.skill-icon-box.blue { color: #3b82f6; }
+.skill-icon-box.yellow { color: #eab308; }
+.skill-icon-box.green { color: #22c55e; }
+.skill-icon-box.slate { color: #cbd5e1; }
+.skill-icon-box.emerald { color: #10b981; }
+.skill-icon-box.crimson { color: var(--accent-crimson); }
+.skill-icon-box.rose { color: #f43f5e; }
+.skill-icon-box.cyan { color: var(--accent-cyan); }
+
+.skill-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: var(--text-main);
+}
+
+.skill-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+
+/* ==========================================================================
+   ESTILOS DE CONTACTO UNIFORMES (ESTILO FOTO 5 MEJORADO)
+   ========================================================================== */
+.contact-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-card-item {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.8rem;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-card-item:hover {
+    border-color: var(--accent-cyan);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px var(--accent-cyan-glow);
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--text-main);
+    border-radius: 50%;
+}
+
+.contact-icon.red { color: #ff4d4d; }
+.contact-icon.cyan { color: #00f0ff; }
+.contact-icon.green { color: #10b981; }
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    width: 100%;
+}
+
+.contact-label {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.contact-val {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.skill-icon-box.pink { color: #f472b6; }
+.skill-icon-box.amber { color: #fbbf24; }
+.skill-icon-box.indigo { color: #818cf8; }
+.skill-icon-box.emerald { color: #34d399; }
+.skill-icon-box.blue { color: #60a5fa; }
+.skill-icon-box.yellow { color: #facc15; }
+.skill-icon-box.orange { color: #fb923c; }
+.skill-icon-box.teal { color: #2dd4bf; }
+
+/* Altura extendida para las fotos de la sección "Sobre Mí / Detrás del Backend" */
+.project-media.about-media {
+    height: 320px; /* Aumentado para que las fotos se encuadren adecuadamente */
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bg-secondary);
+}
+
+.project-media.about-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.85;
+    transition: var(--transition);
+}
+
+.project-card:hover .project-media.about-media img {
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+/* Badge flotante sobre la foto en "Sobre Mí" */
+.project-media.about-media .project-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: rgba(8, 11, 16, 0.85);
+    backdrop-filter: blur(4px);
+}
+
+/* Contenedor sin foto para las tarjetas de Proyectos */
+.project-card.no-media .project-info {
+    padding: 1.8rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-header-badge {
+    margin-bottom: 1.2rem;
+}
+
+.card-header-badge .project-badge {
+    position: static;
+    display: inline-block;
+}
+
+/* Contenedor y diseño de la foto de perfil ampliada en el Hero */
+.hero-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.hero-profile-container {
+    width: 100%;             /* Se adapta al ancho de la columna de código */
+    max-width: 420px;        /* Ancho máximo similar al cuadro de código */
+    height: 260px;           /* Altura rectangular y elegante */
+    border-radius: 12px;     /* Bordes ligeramente redondeados estilo tarjeta de código */
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    background-color: var(--bg-secondary);
+    transition: var(--transition);
+}
+
+.hero-profile-container:hover {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 25px var(--accent-cyan-glow);
+}
+
+.hero-profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%; /* Centra la parte superior para que tu rostro luzca perfecto */
+    transition: var(--transition);
+}
+
+.hero-profile-container:hover .hero-profile-img {
+    transform: scale(1.02);
+}
+
+/* Asegurar que la caja de código y la foto compartan el mismo ancho máximo */
+.hero-aside .code-box {
+    width: 100%;
+    max-width: 420px;
+}
