@@ -7,30 +7,35 @@
     <meta name="description" content="Portafolio de desarrollo backend, arquitectura de datos y desarrollo web artesanal sin frameworks.">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+<header class="main-header">
+  <div class="header-container">
+    
+    <!-- Menú de navegación principal -->
+    <nav class="main-nav">
+      <a href="#about" class="nav-link">Detrás del Backend</a>
+      <a href="#proyectos" class="nav-link">Proyectos</a>
+      <a href="#habilidades" class="nav-link">Stack Técnico</a>
+      <a href="#habilidades-adaptativas" class="nav-link">Adaptativas</a>
+      <a href="#flujo-trabajo" class="nav-link">Flujo</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
+    </nav>
 
-        <nav class="main-nav">
-            <a href="#about" class="nav-link"> Detrás del Backend</a>
-            <a href="#proyectos" class="nav-link"> Proyectos</a>
-            <a href="#habilidades" class="nav-link">Stack Técnico</a>
-            <a href="#habilidades-adaptativas" class="nav-link">Adaptativas</a>
-            <a href="#flujo-trabajo" class="nav-link">Flujo</a>
-            <a href="#contacto" class="nav-link">Contacto</a>
-            <div class="theme-switch-container">
-            <button id="themeToggle" class="btn-toggle" aria-label="Cambiar tema de color">
-                <span class="mode-label">MODO :</span> <span id="themeLabel">DARK</span>
-            </button>
-        </div>
+    <!-- Acciones de la derecha (Tema y CV) -->
+    <div class="header-actions">
+      <div class="theme-switch-container">
+        <button id="themeToggle" class="btn-toggle" aria-label="Cambiar tema de color">
+          <span class="mode-label">MODO :</span> <span id="themeLabel">DARK</span>
+        </button>
+      </div>
 
-            
-        </nav>
-          
-        <a href="/CVPablo Alejandor Navas Paredes.pdf (7).pdf" target="_blank" rel="noopener noreferrer" class="btn-cv">
-            Ver CV.pdf 
-        </a>
-    </header>
-<!-- Hero Section -->
+      <a href="/CVPablo Alejandor Navas Paredes.pdf (7).pdf" target="_blank" rel="noopener noreferrer" class="btn-cv">
+        Ver CV.pdf
+      </a>
+    </div>
+
+  </div>
+</header>
+
         <section id="hero" class="hero-section">
             <div class="hero-content">
                 <p class="hero-tag">INGENIERÍA DE SOFTWARE & BASE DE DATOS </p>
@@ -136,11 +141,11 @@ Más allá del ámbito del código, mantengo un estilo de vida saludable y activ
         <article class="project-card compact no-media">
             <div class="project-info">
                 <div class="card-header-badge">
-                    <span class="project-badge crimson">BACKEND / CLI</span>
+                    <span class="project-badge crimson">BACKEND</span>
                 </div>
                 <h3 class="project-title">Portafolio Freelance CLI & DB Core</h3>
                 <p class="project-desc">
-                    Aplicación de consola interactiva en Node.js y MongoDB para la gestión integral del ciclo de vida de proyectos, propuestas, finanzas y entregables con transacciones atómicas ACID.
+                    Aplicación echa junto a un compañero de una consola interactiva en Node.js y MongoDB para la gestión integral del ciclo de vida de proyectos, propuestas, finanzas y entregables con transacciones atómicas ACID.
                 </p>
                 <div class="project-tags">
                     <span class="tag">Node.js</span>
@@ -148,7 +153,7 @@ Más allá del ámbito del código, mantengo un estilo de vida saludable y activ
                     <span class="tag">JavaScript</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/pablo-navas" target="_blank" rel="noopener noreferrer" class="link-github">[GitHub Repo]</a>
+                    <a href="https://github.com/PabloNavasGT/Portafolio-Freelance-CLI-pablo.git" target="_blank" rel="noopener noreferrer" class="link-github">[GitHub Repo]</a>
                 </div>
             </div>
         </article>
@@ -169,7 +174,7 @@ Más allá del ámbito del código, mantengo un estilo de vida saludable y activ
                     <span class="tag">ES6+</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/pablo-navas" target="_blank" rel="noopener noreferrer" class="link-github">[ GitHub Repo ]</a>
+                    <a href="https://github.com/PabloNavasGT/conciertoconexion_pablonavas" target="_blank" rel="noopener noreferrer" class="link-github">[ GitHub Repo ]</a>
                 </div>
             </div>
         </article>
@@ -182,7 +187,7 @@ Más allá del ámbito del código, mantengo un estilo de vida saludable y activ
                 </div>
                 <h3 class="project-title">Sistema de Compra & Gestión Inmobiliaria</h3>
                 <p class="project-desc">
-                    API RESTful en Node.js con MySQL para gestionar catálogos de casas, apartamentos, etc.
+                     Node.js con NoSQL para gestionar catálogos de casas, apartamentos, etc.
                 </p>
                 <div class="project-tags">
                     <span class="tag">Node.js</span>
@@ -190,7 +195,7 @@ Más allá del ámbito del código, mantengo un estilo de vida saludable y activ
                     <span class="tag">NoSQL</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/pablo-navas" target="_blank" rel="noopener noreferrer" class="link-github">[ GitHub Repo ]</a>
+                    <a href="https://github.com/PabloNavasGT/comprasdecasa_pablo.git" target="_blank" rel="noopener noreferrer" class="link-github">[ GitHub Repo ]</a>
                 </div>
             </div>
         </article>
